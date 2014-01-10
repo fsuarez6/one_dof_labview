@@ -1,5 +1,9 @@
 ﻿<?xml version='1.0' encoding='UTF-8'?>
 <Project Type="Project" LVVersion="11008008">
+	<Property Name="varPersistentID:{33BD17E0-D833-40BF-880E-823BEA19430E}" Type="Ref">/cRIO 9074 - Master/Common/Share Variables.lvlib/Current Limit</Property>
+	<Property Name="varPersistentID:{72855D9C-662A-4938-BFBF-C9962389CC80}" Type="Ref">/cRIO 9074 - Master/Common/Share Variables.lvlib/Position</Property>
+	<Property Name="varPersistentID:{800E5A39-F743-467E-9D61-D3D864069B75}" Type="Ref">/cRIO 9074 - Master/Common/Share Variables.lvlib/Force</Property>
+	<Property Name="varPersistentID:{C39160E2-3AE2-4FDB-B708-0B7D916EBBB6}" Type="Ref">/cRIO 9074 - Master/Common/Share Variables.lvlib/Stop</Property>
 	<Item Name="My Computer" Type="My Computer">
 		<Property Name="IOScan.Faults" Type="Str"></Property>
 		<Property Name="IOScan.NetVarPeriod" Type="UInt">100</Property>
@@ -72,6 +76,10 @@
 		<Property Name="target.webservices.SecurityAPIKey" Type="Str">PqVr/ifkAQh+lVrdPIykXlFvg12GhhQFR8H9cUhphgg=:pTe9HRlQuMfJxAG6QCGq7UvoUpJzAzWGKy5SbZ+roSU=</Property>
 		<Property Name="target.webservices.ValidTimestampWindow" Type="Int">15</Property>
 		<Property Name="TargetOSID" Type="Str">VxWorks-PPC603</Property>
+		<Item Name="Common" Type="Folder">
+			<Item Name="Pulses to Radians.vi" Type="VI" URL="../../Common/Pulses to Radians.vi"/>
+			<Item Name="Share Variables.lvlib" Type="Library" URL="../../Common/Share Variables.lvlib"/>
+		</Item>
 		<Item Name="Chassis" Type="cRIO Chassis">
 			<Property Name="crio.ProgrammingMode" Type="Str">fpga</Property>
 			<Property Name="crio.ResourceID" Type="Str">RIO0</Property>
@@ -650,21 +658,6 @@
 					<Item Name="vi.lib" Type="Folder">
 						<Item Name="niFPGA Discrete PID.vi" Type="VI" URL="/&lt;vilib&gt;/express/rvi/analysis/control/discrete linear/niFPGA Discrete PID.vi"/>
 					</Item>
-					<Item Name="_nicrio_cRIO-9505_DriveDirection.ctl" Type="VI" URL="/&lt;vilib&gt;/LabVIEW Targets/FPGA/cRIO/cRIO-9505/controls.llb/_nicrio_cRIO-9505_DriveDirection.ctl"/>
-					<Item Name="_nicrio_cRIO-9505_DriveStatus.ctl" Type="VI" URL="/&lt;vilib&gt;/LabVIEW Targets/FPGA/cRIO/cRIO-9505/controls.llb/_nicrio_cRIO-9505_DriveStatus.ctl"/>
-					<Item Name="EIO_ResourceConfig.ctl" Type="VI" URL="/&lt;vilib&gt;/eio/EIO_ResourceConfig.ctl"/>
-					<Item Name="niFpgaExecutionStage.ctl" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/niFpgaExecutionStage.ctl"/>
-					<Item Name="niFpgaGetScratchAppInstance.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/niFpgaGetScratchAppInstance.vi"/>
-					<Item Name="niLvFpgaEmuInfo.ctl" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/sdk/emulation/public/niLvFpgaEmuInfo.ctl"/>
-					<Item Name="nirviCommon.vi" Type="VI" URL="/&lt;vilib&gt;/express/rvi/timingcommon/nirviCommon.vi"/>
-					<Item Name="nirviEmuClasses.ctl" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuClasses.ctl"/>
-					<Item Name="nirviEmuReportErrorAndStop.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuReportErrorAndStop.vi"/>
-					<Item Name="nirviEmuTemplateMethod_errors.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuTemplateMethod_errors.vi"/>
-					<Item Name="nirviEmuTemplatePropertyGet_errors.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuTemplatePropertyGet_errors.vi"/>
-					<Item Name="nirviEmuTemplatePropertyGet_noerrors.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuTemplatePropertyGet_noerrors.vi"/>
-					<Item Name="nirviEmuTemplatePropertySet_errors.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuTemplatePropertySet_errors.vi"/>
-					<Item Name="nirviEmuTemplatePropertySet_noerrors.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuTemplatePropertySet_noerrors.vi"/>
-					<Item Name="XDNodeRunTimeDep.lvlib" Type="Library" URL="/&lt;vilib&gt;/Platform/TimedLoop/XDataNode/XDNodeRunTimeDep.lvlib"/>
 				</Item>
 				<Item Name="Build Specifications" Type="Build">
 					<Item Name="Master Interface" Type="{F4C5E96F-7410-48A5-BB87-3559BC9B167F}">
@@ -698,7 +691,31 @@
 				</Item>
 			</Item>
 		</Item>
-		<Item Name="Dependencies" Type="Dependencies"/>
+		<Item Name="Master RT Target.vi" Type="VI" URL="../Master RT Target.vi"/>
+		<Item Name="Dependencies" Type="Dependencies">
+			<Item Name="vi.lib" Type="Folder">
+				<Item Name="Error Cluster From Error Code.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Error Cluster From Error Code.vi"/>
+				<Item Name="Error to Warning.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Error to Warning.vi"/>
+				<Item Name="No Time Out Error.vi" Type="VI" URL="/&lt;vilib&gt;/real-time/_support/legacy/No Time Out Error.vi"/>
+				<Item Name="Trim Whitespace.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/Trim Whitespace.vi"/>
+				<Item Name="whitespace.ctl" Type="VI" URL="/&lt;vilib&gt;/Utility/error.llb/whitespace.ctl"/>
+			</Item>
+			<Item Name="_nicrio_cRIO-9505_DriveStatus.ctl" Type="VI" URL="/&lt;vilib&gt;/LabVIEW Targets/FPGA/cRIO/cRIO-9505/controls.llb/_nicrio_cRIO-9505_DriveStatus.ctl"/>
+			<Item Name="MasterInterface.lvbitx" Type="Document" URL="../FPGA Bitfiles/MasterInterface.lvbitx"/>
+			<Item Name="NiFpgaLv.dll" Type="Document" URL="NiFpgaLv.dll">
+				<Property Name="NI.PreserveRelativePath" Type="Bool">true</Property>
+			</Item>
+			<Item Name="niFpgaNodeNameForErrorReporting.ctl" Type="VI" URL="/&lt;vilib&gt;/rvi/interface/common/niFpgaNodeNameForErrorReporting.ctl"/>
+			<Item Name="niLvFpga_Close_cRIO-9074.vi" Type="VI" URL="/&lt;vilib&gt;/FPGAPlugInAG/cRIO-9074/niLvFpga_Close_cRIO-9074.vi"/>
+			<Item Name="niLvFpga_Open_cRIO-9074.vi" Type="VI" URL="/&lt;vilib&gt;/FPGAPlugInAG/cRIO-9074/niLvFpga_Open_cRIO-9074.vi"/>
+			<Item Name="niLvFpgaAdjustHostInterfaceError.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/errors/niLvFpgaAdjustHostInterfaceError.vi"/>
+			<Item Name="niLvFpgaErrorClusterFromErrorCode.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/errors/niLvFpgaErrorClusterFromErrorCode.vi"/>
+			<Item Name="niLvFpgaFormatErrorSource.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/errors/niLvFpgaFormatErrorSource.vi"/>
+			<Item Name="niLvFpgaWhatHappensToTopLevelVI.ctl" Type="VI" URL="/&lt;vilib&gt;/rvi/errors/niLvFpgaWhatHappensToTopLevelVI.ctl"/>
+			<Item Name="nirio_resource_hc.ctl" Type="VI" URL="/&lt;vilib&gt;/userdefined/High Color/nirio_resource_hc.ctl"/>
+			<Item Name="nirviErrorClusterFromErrorCode.vi" Type="VI" URL="/&lt;vilib&gt;/RVI Host/nirviSupport.llb/nirviErrorClusterFromErrorCode.vi"/>
+			<Item Name="nirviWhatTheDeviceIsDoing.ctl" Type="VI" URL="/&lt;vilib&gt;/rvi/ClientSDK/nirviWhatTheDeviceIsDoing.ctl"/>
+		</Item>
 		<Item Name="Build Specifications" Type="Build"/>
 	</Item>
 	<Item Name="cRIO 9022 - Slave" Type="RT CompactRIO">
@@ -1330,23 +1347,6 @@
 					<Item Name="vi.lib" Type="Folder">
 						<Item Name="niFPGA Discrete PID.vi" Type="VI" URL="/&lt;vilib&gt;/express/rvi/analysis/control/discrete linear/niFPGA Discrete PID.vi"/>
 					</Item>
-					<Item Name="_nicrio_cRIO-9505_DriveDirection.ctl" Type="VI" URL="/&lt;vilib&gt;/LabVIEW Targets/FPGA/cRIO/cRIO-9505/controls.llb/_nicrio_cRIO-9505_DriveDirection.ctl"/>
-					<Item Name="_nicrio_cRIO-9505_DriveStatus.ctl" Type="VI" URL="/&lt;vilib&gt;/LabVIEW Targets/FPGA/cRIO/cRIO-9505/controls.llb/_nicrio_cRIO-9505_DriveStatus.ctl"/>
-					<Item Name="EIO_ResourceConfig.ctl" Type="VI" URL="/&lt;vilib&gt;/eio/EIO_ResourceConfig.ctl"/>
-					<Item Name="nicrio_cRIO-9205_TerminalMode.ctl" Type="VI" URL="/&lt;vilib&gt;/LabVIEW Targets/FPGA/cRIO/shared/nicrio_ModuleControls/nicrio_cRIO-9205_TerminalMode.ctl"/>
-					<Item Name="nicrio_cRIO-9205_VoltageRange.ctl" Type="VI" URL="/&lt;vilib&gt;/LabVIEW Targets/FPGA/cRIO/shared/nicrio_ModuleControls/nicrio_cRIO-9205_VoltageRange.ctl"/>
-					<Item Name="niFpgaExecutionStage.ctl" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/niFpgaExecutionStage.ctl"/>
-					<Item Name="niFpgaGetScratchAppInstance.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/niFpgaGetScratchAppInstance.vi"/>
-					<Item Name="niLvFpgaEmuInfo.ctl" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/sdk/emulation/public/niLvFpgaEmuInfo.ctl"/>
-					<Item Name="nirviCommon.vi" Type="VI" URL="/&lt;vilib&gt;/express/rvi/timingcommon/nirviCommon.vi"/>
-					<Item Name="nirviEmuClasses.ctl" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuClasses.ctl"/>
-					<Item Name="nirviEmuReportErrorAndStop.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuReportErrorAndStop.vi"/>
-					<Item Name="nirviEmuTemplateMethod_errors.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuTemplateMethod_errors.vi"/>
-					<Item Name="nirviEmuTemplatePropertyGet_errors.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuTemplatePropertyGet_errors.vi"/>
-					<Item Name="nirviEmuTemplatePropertyGet_noerrors.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuTemplatePropertyGet_noerrors.vi"/>
-					<Item Name="nirviEmuTemplatePropertySet_errors.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuTemplatePropertySet_errors.vi"/>
-					<Item Name="nirviEmuTemplatePropertySet_noerrors.vi" Type="VI" URL="/&lt;vilib&gt;/rvi/eio/common/nirviEmuTemplatePropertySet_noerrors.vi"/>
-					<Item Name="XDNodeRunTimeDep.lvlib" Type="Library" URL="/&lt;vilib&gt;/Platform/TimedLoop/XDataNode/XDNodeRunTimeDep.lvlib"/>
 				</Item>
 				<Item Name="Build Specifications" Type="Build">
 					<Item Name="Slave Interface" Type="{F4C5E96F-7410-48A5-BB87-3559BC9B167F}">
